@@ -1,0 +1,6 @@
+COPY (DIRECTORY): source\muzou
+COPY (DIRECTORY): source\muzou
+COPY (DIRECTORY): source\muzou
+DELETE (FILE): replica\ne
+DELETE (FILE): replica\ne
+COPY (DIRECTORY): source\muzou\a
