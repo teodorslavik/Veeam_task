@@ -1,13 +1,16 @@
-import glob, os, pathlib, hashlib, shutil, time
+import glob, os, pathlib, hashlib, shutil, time, sys
+from datetime import datetime
 
-source = "source"
-replica = "replica"
+source = sys.argv[3] #"source"
+replica = sys.argv[4] #"replica"
+logfile = sys.argv[2] #"log.txt"
 
 listSource = {}
 listReplica = {}
 
 timeNext = 0
-timeIncrease = 10
+timeIncrease = float(sys.argv[1])
+
 
 def deleteElement(path):  
     elementType = "NONE"
@@ -17,8 +20,8 @@ def deleteElement(path):
     if os.path.isdir(path):
         elementType = "DIRECTORY"
 
-    f = open("log.txt", "a")
-    f.write("DELETE (" + elementType + "): " + str(path) + "\n")
+    f = open(logfile, "a")
+    f.write("[" + datetime.now().strftime("%d/%m/%Y %H:%M:%S") + "] " + "DELETE (" + elementType + "): " + str(path) + "\n")
     f.close() 
     
     print("DELETING: " + path + " (" + elementType + ")")
@@ -37,8 +40,8 @@ def copyElement(src, dest):
     if os.path.isdir(src):
         elementType = "DIRECTORY"
 
-    f = open("log.txt", "a")
-    f.write("COPY (" + elementType + "): " + str(src) + "\n")
+    f = open(logfile, "a")
+    f.write("[" + datetime.now().strftime("%d/%m/%Y %H:%M:%S") + "] " + "COPY (" + elementType + "): " + src + " to " + dest + "\n")
     f.close() 
     
     print("COPYING: " + src + " to " + dest + " (" + elementType + ")")
@@ -99,8 +102,7 @@ def sync():
                 
         
 # TODO
-# log time
-# timmingtime.time()
+# arguments -timedelay, -logfile path
 
 while True:
     if(time.time() >= timeNext):

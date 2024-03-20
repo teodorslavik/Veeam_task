@@ -1,6 +1,4 @@
-COPY (DIRECTORY): source\muzou
-COPY (DIRECTORY): source\muzou
-COPY (DIRECTORY): source\muzou
-DELETE (FILE): replica\ne
-DELETE (FILE): replica\ne
-COPY (DIRECTORY): source\muzou\a
+[20/03/2024 09:31:11] COPY (FILE): source\folder1\file3.txt to replica\folder1\file3.txt
+[20/03/2024 09:31:11] COPY (DIRECTORY): source\folder1\folder_2 to replica\folder1\folder_2
+[20/03/2024 09:33:11] COPY (FILE): source\file1.txt to replica\file1.txt
+[20/03/2024 09:33:11] COPY (DIRECTORY): source\folder1 to replica\folder1
